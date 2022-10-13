@@ -44,6 +44,8 @@ import textwrap
 
 import setuptools
 
+version = "1.92"
+
 _PATH_ROOT = os.path.dirname(__file__)
 _PATH_REQUIRES = os.path.join(_PATH_ROOT, "requirements")
 
@@ -57,8 +59,7 @@ def _load_requirements(path_dir: str = _PATH_ROOT, file_name: str = "requirement
 if __name__ == "__main__":
     setuptools.setup(
         name="PyGithub",
-        use_scm_version=True,
-        setup_requires=["setuptools_scm"],
+        version=version,
         description="Use the full Github API v3",
         author="Vincent Jacques",
         author_email="vincent@vincent-jacques.net",
