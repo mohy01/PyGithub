@@ -426,6 +426,18 @@ class Organization(Framework.TestCase):
         secrets = self.org.get_secrets()
         self.assertEqual(len(list(secrets)), 1)
 
+    def testAddOrganizationSecretToRepo(self):
+        repo = self.org.get_repo("TestPyGithub")
+        self.assertTrue(
+            self.org.add_repository_to_secret("secret-name", repo.id, "actions")
+        )
+
+    def testAddOrganizationDependabotSecretToRepo(self):
+        repo = self.org.get_repo("TestPyGithub")
+        self.assertTrue(
+            self.org.add_repository_to_secret("secret-name", repo.id, "dependabot")
+        )
+
     def testInviteUserWithNeither(self):
         with self.assertRaises(AssertionError) as raisedexp:
             self.org.invite_user()
